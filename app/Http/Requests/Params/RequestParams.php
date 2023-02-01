@@ -4,8 +4,8 @@ namespace App\Http\Requests\Params;
 
 use Illuminate\Support\Arr;
 use ReflectionClass;
-use Sigma\Core\Dto\BaseDataObject;
-use Sigma\Core\Http\Requests\ApiRequest;
+use App\Dto\BaseDataObject;
+use App\Http\Requests\ApiRequest;
 
 /**
  * Class RequestParams
@@ -51,8 +51,8 @@ abstract class RequestParams extends BaseDataObject
     /**
      * Create from request
      * All logic related to map request data to form object
-     * @param \Sigma\Core\Http\Requests\ApiRequest $request
-     * @return \Sigma\Core\Http\Requests\Params\RequestParams
+     * @param \App\Http\Requests\ApiRequest $request
+     * @return \App\Http\Requests\Params\RequestParams
      * @throws \ReflectionException
      */
     public static function fromRequest(ApiRequest $request): RequestParams

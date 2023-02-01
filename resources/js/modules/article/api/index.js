@@ -1,11 +1,19 @@
 import axios from 'axios';
+import { route } from 'App/router/route';
 
 const article = {
     /**
      * @return {Promise<AxiosResponse<any>>}
      */
-    getTest() {
-        return axios.get('api/article/test');
+    article(article) {
+        return axios.get(route(`api/article/article/${ article }`));
+    },
+
+    /**
+     * @return {Promise<AxiosResponse<any>>}
+     */
+    articles() {
+        return axios.get(route('api/article/articles'));
     },
 };
 

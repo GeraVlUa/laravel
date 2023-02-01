@@ -14,31 +14,11 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
  */
 
 mix
-    //.vue()
-    .js('resources/js/app.js', 'public/js')
     .vue()
+    .js('resources/js/app.js', 'public/js')
     .sass('resources/scss/app.scss', 'public/css');
 
 mix.webpackConfig({
-    // module: {
-    //     rules: [
-    //         {
-    //             test: /\.vue$/,
-    //             loader: 'vue-loader'
-    //         },
-    //         /*{
-    //             test: /\.scss$/,
-    //             use: [
-    //                 'style-loader',
-    //                 'css-loader',
-    //                 'sass-loader',
-    //             ]
-    //         }*/
-    //     ]
-    // },
-    // plugins: [
-    //    // new VueLoaderPlugin()
-    // ],
     resolve: {
         alias: {
             'App': path.resolve(__dirname, 'resources/js'),
@@ -47,4 +27,5 @@ mix.webpackConfig({
             'Modules': path.resolve(__dirname, 'resources/js/modules'),
         },
     },
+    devtool: 'eval-source-map'
 })

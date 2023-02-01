@@ -1,8 +1,10 @@
 <template>
-    <div>
+    <div class="col d-flex align-items-start">
         <h2>{{ title }}</h2>
         <p>{{ description }}</p>
-        <slot />
+        <a href="#" class="btn btn-primary">
+            Primary button
+        </a>
     </div>
 </template>
 
@@ -11,7 +13,7 @@ export default {
     /**
      * Component name
      */
-    name: 'Test',
+    name: 'ArticlePreview',
 
     /**
      * Component properties.
@@ -22,7 +24,7 @@ export default {
          */
         article: {
             type: Object,
-            required: true,
+            required: false,
         },
     },
 
@@ -43,6 +45,13 @@ export default {
          */
         description() {
             return this.article.description || 'Paragraph of text beneath';
+        },
+
+        /**
+         * @return {string}
+         */
+        link() {
+            return '';
         },
     }
 }

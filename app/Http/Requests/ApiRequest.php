@@ -7,7 +7,7 @@ use App\Http\Requests\Params\RequestParams;
 
 /**
  * Class ApiRequest
- * @package Sigma\Core\Http\Requests
+ * @package App\Http\Requests
  */
 class ApiRequest extends FormRequest
 {
@@ -18,7 +18,7 @@ class ApiRequest extends FormRequest
 
     /**
      * Protected function
-     * @return \Sigma\Core\Http\Requests\Params\RequestParams
+     * @return \App\Http\Requests\Params\RequestParams
      */
     public function getParams(): RequestParams
     {

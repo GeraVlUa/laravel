@@ -1,5 +1,6 @@
-import Home from 'Modules//article/components/Home.vue';
-import Test from 'Modules//article/components/Test.vue';
+import Home from 'Modules/article/components/Home.vue';
+import Test from 'Modules/article/components/Test.vue';
+import SingleArticle from "Modules/article/components/article/SingleArticle";
 
 /**
  * Routes.
@@ -26,5 +27,6 @@ const addRoute = (url, component) => {
 }
 
 addRoute('test', Test);
+addRoute('article/:id', SingleArticle);
 
 export default routes;

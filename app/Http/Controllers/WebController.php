@@ -6,7 +6,7 @@ use Illuminate\Routing\Controller;
 
 /**
  * Class WebController
- * @package Sigma\Core\Http\Controllers
+ * @package App\Http\Controllers
  */
 class WebController extends Controller
 {

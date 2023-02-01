@@ -21,37 +21,27 @@ const createAsyncMutation = (type) => ({
  * Create async action helper.
  * @param type
  * @param callbacks
- * @param onlyOne
  * @returns {Function}
  */
-const createAction = (type, callbacks, onlyOne = false) => (async (store, payload) => {
-    store.commit(type.PENDING);
+const createAction = (type, callbacks) => (async (state, payload) => {
+    state.commit(type.PENDING);
+
     try {
-        let config = {};
-        if (onlyOne) {
-            store.state[type.abortKey] = new AbortController();
-            config = { signal: store.state[type.abortKey].signal };
-        }
-        const response = await callbacks.call(this, store, payload, config).catch((error) => {
+        const response = await callbacks.call(this, state, payload).catch((error) => {
             if (error.constructor.name !== 'Cancel') {
                 return Promise.reject(error);
             }
         });
+
         if (isObject(response)) {
-            const data = response.data;
-            store.commit(type.SUCCESS, data, payload);
+            state.commit(type.SUCCESS, response.data, payload);
             return Promise.resolve(response);
         }
     } catch (error) {
-        console.log(error);
-        store.commit(type.FAILURE, error && error.response);
+        state.commit(type.FAILURE, error && error.response);
         return Promise.reject(error);
     }
 });
-
-/**
- * Helper to create unified mutations and avoid copy pasted code.
- */
 
 /**
  * Mapping for mutations and loading.

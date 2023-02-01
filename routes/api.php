@@ -27,7 +27,9 @@ Route::group([
         'as' => 'article.',
         'namespace' => 'Article',
     ], function () {
-        Route::get('/{article}', 'GetArticleController')->name('article');
+
+        Route::get('/articles', 'GetArticlesController')->name('articles');
+        Route::get('/article/{article}', 'GetArticleController')->name('article');
     });
 });
 
