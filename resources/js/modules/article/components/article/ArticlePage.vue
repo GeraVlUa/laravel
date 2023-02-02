@@ -1,21 +1,37 @@
 <template>
-    <article-preview :article="article" />
+    <article-details :article="article">
+        <router-link
+            :to="{ name: 'home' }"
+            exact
+            class="btn btn-primary"
+        >
+            Edit
+        </router-link>
+        <router-link
+            :to="{ name: 'home' }"
+            exact
+            class="btn btn-primary"
+        >
+            Delete
+        </router-link>
+
+    </article-details>
 </template>
 
 <script>
 import { mapActions, mapState } from "vuex";
-import ArticlePreview from "Modules/article/components/article/ArticlePreview";
+import ArticleDetails from "Modules/article/components/article/ArticleDetails";
 
 export default {
     /**
      * Component name
      */
-    name: 'SingleArticle',
+    name: 'ArticlePage',
 
     /**
      * Components.
      */
-    components: { ArticlePreview },
+    components: { ArticleDetails },
 
     /**
      * Computed props
@@ -27,6 +43,7 @@ export default {
         ...mapState('article', {
             article: state => state.article,
         }),
+
     },
 
     /**
@@ -47,7 +64,7 @@ export default {
      */
     async mounted() {
         await this.loadArticle(
-            this.$route.params.id
+            this.$route.params.article
         );
     }
 }

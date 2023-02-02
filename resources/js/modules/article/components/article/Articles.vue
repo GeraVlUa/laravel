@@ -4,11 +4,19 @@
             v-if="!loadArticlesPending"
             class="row g-4 py-5 row-cols-1 row-cols-lg-3"
         >
-            <article-preview
+            <article-details
                 v-for="article in articles"
                 :key="article.id"
                 :article="article"
-            />
+            >
+                <router-link
+                    :to="{ name: 'article/:article', params: { article: article.id } }"
+                    exact
+                    class="btn btn-primary"
+                >
+                    Details
+                </router-link>
+            </article-details>
         </div>
         <div v-else>
             <no-result />
@@ -19,7 +27,7 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import NoResult from "Modules/article/components/NoResult";
-import ArticlePreview from "Modules/article/components/article/ArticlePreview";
+import ArticleDetails from "Modules/article/components/article/ArticleDetails";
 
 export default {
     /**
@@ -30,7 +38,7 @@ export default {
     /**
      * Components.
      */
-    components: { ArticlePreview, NoResult },
+    components: { ArticleDetails, NoResult },
 
     /**
      * Computed props

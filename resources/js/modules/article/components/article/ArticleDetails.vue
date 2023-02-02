@@ -2,9 +2,7 @@
     <div class="col d-flex align-items-start">
         <h2>{{ title }}</h2>
         <p>{{ description }}</p>
-        <a href="#" class="btn btn-primary">
-            Primary button
-        </a>
+        <slot />
     </div>
 </template>
 
@@ -13,7 +11,7 @@ export default {
     /**
      * Component name
      */
-    name: 'ArticlePreview',
+    name: 'ArticleDetails',
 
     /**
      * Component properties.
